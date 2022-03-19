@@ -1,0 +1,38 @@
+.job {
+  width: 100%;
+  background-color: green;
+}
+
+.job__container {
+  margin: 10px 0;
+  height: 200px;
+  display: flex;
+  text-align: start;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.job__left {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-weight: 700;
+  h1 {
+    font-size: 36px;
+  }
+
+  .job__image {
+    height: 160px;
+    width: 160px;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.job__right {
+  button {
+    padding: 10px;
+  }
+}

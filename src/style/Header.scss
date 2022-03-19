@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  height: fit-content;
+  background-color: white;
+}
+
+.header__container {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    li {
+      margin: 0 20px;
+      button {
+        cursor: pointer;
+      }
+    }
+  }
+}

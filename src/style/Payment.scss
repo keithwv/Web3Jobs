@@ -1,0 +1,16 @@
+.payment__container {
+  height: 200px;
+  background-color: aqua;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.img__placeholder {
+  height: 50px;
+  width: 50px;
+  background-color: beige;
+  z-index: 100;
+}

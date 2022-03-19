@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500;600;700&display=swap");
+
+//variables
+
+:root {
+  --main-color: #6666ff;
+  --background-color: #000033;
+  --light-grey: #e0e0e0;
+  --dark-grey: #666666;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  background-color: black;
+}
+
+@media only screen and (max-width: 375px) {
+  html {
+    font-size: 0.75rem;
+  }
+}

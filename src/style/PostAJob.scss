@@ -1,0 +1,95 @@
+.post__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.post__header {
+  color: #fff;
+  font-size: 40px;
+  padding: 70px;
+}
+
+.post__section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: fit-content;
+  padding: 50px 0;
+  background-color: red;
+  box-sizing: border-box;
+}
+
+.leftside {
+  flex: 2;
+  padding: 40px;
+
+  background-color: black;
+  border: 2px solid #fff;
+  height: fit-content;
+
+  input {
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    border: 2px solid #fff;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #fff;
+    text-align: start;
+    vertical-align: text-top;
+    margin-bottom: 20px;
+  }
+  input::placeholder {
+    font-size: 14px;
+    color: #fff;
+  }
+
+  input:nth-child(2) {
+    height: 300px;
+  }
+
+  .post__salary {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    select {
+      width: 100%;
+      height: 60px;
+      background-color: black;
+      border: 3px solid #fff;
+      padding-left: 15px;
+      font-size: 14px;
+      color: #fff;
+      text-align: start;
+      vertical-align: text-top;
+      margin-bottom: 20px;
+    }
+  }
+  .submit {
+    width: 100%;
+    height: 60px;
+    background-color: #d20472;
+    border: 2px solid #fff;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+}
+
+.rightside {
+  flex: 1;
+  height: 500px;
+
+  background-color: violet;
+}
+
+.postajob__tools {
+  background-color: #fff;
+  padding: 10px;
+}
