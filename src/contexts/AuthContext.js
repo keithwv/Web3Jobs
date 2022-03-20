@@ -1,12 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import {
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { auth, db } from "../firebase"
-import { doc, setDoc } from "firebase/firestore";
+import { auth } from "../firebase"
+// import { doc, setDoc } from "firebase/firestore";
 
 
 const AuthContext = React.createContext();
@@ -19,27 +18,27 @@ export function useAuth() {
   export function AuthProvider(props) {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const register = async (firstName, lastName, email, password) => {
-      try {
-        const userCred = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        if (userCred.user) {
-          let docRef = doc(db, `users/${userCred.user.uid}`);
-          await setDoc(docRef, {
-            name: firstName,
-            last_name: lastName,
-            email: email,
-            uid: userCred.user.uid,
-          });
-        }
-        console.log(userCred.user);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
+    // const register = async (firstName, lastName, email, password) => {
+    //   try {
+    //     const userCred = await createUserWithEmailAndPassword(
+    //       auth,
+    //       email,
+    //       password
+    //     );
+    //     if (userCred.user) {
+    //       let docRef = doc(db, `users/${userCred.user.uid}`);
+    //       await setDoc(docRef, {
+    //         name: firstName,
+    //         last_name: lastName,
+    //         email: email,
+    //         uid: userCred.user.uid,
+    //       });
+    //     }
+    //     console.log(userCred.user);
+    //   } catch (error) {
+    //     console.log(error.message);
+    //   }
+    // };
 
     const loginFirebase = async (loginEmail, loginPassword) => {
         try {
@@ -76,7 +75,6 @@ export function useAuth() {
 
       const value = {
         currentUser,
-        register,
         loginFirebase,
         logout,
       };

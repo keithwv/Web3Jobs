@@ -4,12 +4,16 @@ import Hero from "./components/Hero";
 import Jobs from "./components/Jobs";
 import Header from "./components/Header";
 import { onSnapshot } from "@firebase/firestore";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { getFirestore, collection } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import PostAJob from "./components/PostAJob";
 import { AuthProvider } from "./contexts/AuthContext";
+import Login from "./components/Login";
+import Admin from "./components/Admin";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -92,7 +96,6 @@ function App() {
     <Router>
       <div className="App">
         <Navbar connectWallet={connectWallet} wallet={wallet} />
-
         <Switch>
           <Route exact path="/">
             <Hero />
@@ -112,11 +115,16 @@ function App() {
               addFilterKeywords={addFilterKeywords}
             />
           </Route>
-
+          <Route exact path='/login'>
+            <Login/>
+          </Route>
+          <Route exact path='/admin'>
+            <ProtectedRoute><Admin/></ProtectedRoute>
+          </Route>
           <Route exact path="/postajob">
             <PostAJob keywordArr={keywordArr} />
           </Route>
-        </Switch>
+          </Switch>
       </div>
     </Router>
     </AuthProvider>
