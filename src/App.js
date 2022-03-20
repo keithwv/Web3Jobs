@@ -9,6 +9,7 @@ import { getFirestore, collection } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import PostAJob from "./components/PostAJob";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -87,6 +88,7 @@ function App() {
   //console.log(wallet);
 
   return (
+    <AuthProvider>
     <Router>
       <div className="App">
         <Navbar connectWallet={connectWallet} wallet={wallet} />
@@ -117,6 +119,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
