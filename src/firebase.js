@@ -1,14 +1,14 @@
 import * as firebase from "firebase/app";
-import { getFirestore, exists } from "@firebase/firestore";
+//import { getFirestore, exists } from "@firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDGppQCrBhFtLxYveQ34D63ZNc8lQNYkfw",
-  authDomain: "web3jobmarket.firebaseapp.com",
-  projectId: "web3jobmarket",
-  storageBucket: "web3jobmarket.appspot.com",
-  messagingSenderId: "216122233533",
-  appId: "1:216122233533:web:8398bcb540835bdbc91dd4",
-  measurementId: "G-M32QT170YT",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTHDOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 
 // Initialize Firebase

@@ -5,7 +5,7 @@ import Jobs from "./components/Jobs";
 import Header from "./components/Header";
 import { onSnapshot } from "@firebase/firestore";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { getFirestore, collection, getDocs, doc } from "@firebase/firestore";
+import { getFirestore, collection } from "@firebase/firestore";
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import PostAJob from "./components/PostAJob";
@@ -65,7 +65,7 @@ function App() {
       onSnapshot(jobsRef, (snapshot) => {
         setJobs(snapshot.docs.map((doc) => doc.data()));
       }),
-    []
+    [jobsRef]
   );
 
   // get metmask wallet address
@@ -84,7 +84,7 @@ function App() {
     }
   };
 
-  console.log(wallet);
+  //console.log(wallet);
 
   return (
     <Router>

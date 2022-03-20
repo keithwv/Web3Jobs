@@ -3,8 +3,6 @@ import {
   collection,
   addDoc,
   getFirestore,
-  setDoc,
-  doc,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -15,6 +13,7 @@ import {
 import "../style/PostAJob.scss";
 import { app } from "../firebase";
 import { ethers } from "ethers";
+import axios from "axios";
 
 const PostAJob = ({ keywordArr }) => {
   const [positon, setPosition] = useState("");
@@ -43,7 +42,7 @@ const PostAJob = ({ keywordArr }) => {
     now.getUTCMilliseconds()
   );
 
-  console.log(utc_timestamp, "thi is the date");
+ //console.log(utc_timestamp, "this is the date");
 
   const db = getFirestore(app);
 
@@ -57,7 +56,7 @@ const PostAJob = ({ keywordArr }) => {
   const onFileChange = async (e) => {
     const file = e.target.files[0];
     const storage = getStorage();
-    const fileRef = ref(storage, file.name);
+    //const fileRef = ref(storage, file.name);
     const storageRef = ref(storage, "images/" + file.name);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -72,6 +71,21 @@ const PostAJob = ({ keywordArr }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+    axios
+    .post("https://us-central1-job-poster-97385.cloudfunctions.net/posting/postajob",{
+      position: positon,
+      description: description
+    })
+    .then(function (response) {
+      console.log(response.data)
+    });
+  } catch(err) {
+    console.log(err.message)
+
+  }
+
+    console.log(e)
     const jobsRef = collection(db, "Jobs");
     await addDoc(jobsRef, {
       positon: positon,
@@ -100,7 +114,7 @@ const PostAJob = ({ keywordArr }) => {
     setAddress("");
     setTwitter("");
     setTools([]);
-    imageURL("");
+    setImageURL("");
   };
 
   //Crypto
@@ -124,7 +138,7 @@ const PostAJob = ({ keywordArr }) => {
 
   const value = fiftyDollarsInETH.toString();
 
-  const [error, setError] = useState();
+ const [error, setError] = useState();
 
   const PaywithCrypto = async () => {
     if (!window.ethereum) {
