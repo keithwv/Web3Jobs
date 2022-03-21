@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import "../style/Job.scss";
 
 const Job = ({ data }) => {
