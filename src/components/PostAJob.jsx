@@ -16,7 +16,7 @@ import { ethers } from "ethers";
 import axios from "axios";
 
 const PostAJob = ({ keywordArr }) => {
-  const [positon, setPosition] = useState("");
+  const [position, setPosition] = useState("");
   const [description, setDescription] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [location, setLocation] = useState("");
@@ -74,8 +74,19 @@ const PostAJob = ({ keywordArr }) => {
     try {
     axios
     .post("https://us-central1-job-poster-97385.cloudfunctions.net/posting/postajob",{
-      position: positon,
-      description: description
+      position: position,
+      approved: "tbd",
+      description: description,
+      companyName: companyName,
+      location: location,
+      url: url,
+      email: email,
+      minSalary: minSalary,
+      maxSalary: maxSalary,
+      address: address,
+      twitter: twitter,
+      tools: tools,
+      image: imageURL,
     })
     .then(function (response) {
       console.log(response.data)
@@ -84,11 +95,10 @@ const PostAJob = ({ keywordArr }) => {
     console.log(err.message)
 
   }
-
-    console.log(e)
     const jobsRef = collection(db, "Jobs");
     await addDoc(jobsRef, {
-      positon: positon,
+      position: position,
+      approved: "tbd",
       description: description,
       companyName: companyName,
       location: location,
@@ -177,7 +187,7 @@ const PostAJob = ({ keywordArr }) => {
                 type="text"
                 placeholder="Position"
                 name="position"
-                value={positon}
+                value={position}
                 onChange={(e) => setPosition(e.target.value)}
               />
               <input
